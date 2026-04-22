@@ -1,0 +1,77 @@
+.mobile-navigation {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 15px;
+    z-index: 1000; /* Чтобы всё меню было поверх сайта */
+}
+
+.mobile-navigation__burger {
+    width: 33px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.mobile-navigation__toggler {
+    display: none;
+}
+
+.mobile-navigation__menu {
+    position: fixed;
+    inset: 0;
+    padding: 80px 20px 20px 10px; /* Увеличил верхний padding, чтобы ссылки не лезли на крестик */
+    background-color: var(--co-white, #fff);
+    translate: -100% 0;
+    transition: translate .33s;
+    z-index: 100; /* Слой для фона и списка */
+}
+
+/* Когда чекбокс нажат — выдвигаем меню */
+.mobile-navigation__toggler:checked ~ .mobile-navigation__menu {
+    translate: 0;
+}
+
+.mobile-navigation__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Исправил end на flex-end для валидности */
+    row-gap: 30px;
+    list-style: none; /* Убираем точки */
+}
+
+.mobile-navigation__link {
+    font-size: 30px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.mobile-navigation__link:hover {
+    color: var(--co-green, green);
+}
+
+/* Стили крестика */
+.mobile-navigation__close {
+    position: fixed; /* Чтобы всегда был в углу экрана */
+    top: 40px;
+    left: 20px;
+    z-index: 200; /* КРЕСТИК ВЫШЕ МЕНЮ */
+    display: none; /* Скрыт по умолчанию */
+    cursor: pointer;
+}
+
+/* ПОКАЗЫВАЕМ КРЕСТИК ПРИ ОТКРЫТОМ МЕНЮ */
+.mobile-navigation__toggler:checked ~ .mobile-navigation__close {
+    display: block;
+}
+
+.mobile-navigation__cross {
+    width: 25px;
+    height: 22px;
+}
+
+@media (max-width: 768px) {
+    .mobile-navigation {
+        display: block;
+    }
+}
